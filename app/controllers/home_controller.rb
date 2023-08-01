@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       if current_user.admin?
-        render 'admin_index'
+        render 'admin/home/index'
       else
-        render 'client_index'
+        render 'client/home/index'
       end
     else
       render 'common_index'
