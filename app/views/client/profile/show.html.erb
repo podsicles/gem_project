@@ -1,0 +1,6 @@
+Me view
+<% if user_signed_in? %>
+  <p> Username: <%= current_user&.username %> </p>
+  <p> Email: <%= current_user&.email %> </p>
+  <p> Coins: <%= current_user&.coins %> </p>
+<% end %>
