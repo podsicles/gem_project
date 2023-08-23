@@ -1,34 +1,65 @@
-<h2>Client Sign up</h2>
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #6a11cb;
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+</style>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4">
+              <h2 class="fw-bold mb-2 text-uppercase">Sign up</h2>
+              <p class="text-white-50 mb-5">Please enter your email and password</p>
+            </div>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource, class: "text-white-50 mb-5" %>
+
+              <div class="field form-outline form-white">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+                <%= f.label :email, class: 'form-label' %><br/>
+              </div>
+
+              <div>
+                <%= f.text_field :username, autofocus: true, class: 'form-control form-control-lg'  %>
+                <%= f.label :username, class: 'form-label' %><br/>
+              </div>
+
+              <div class="field form-outline form-white">
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+                <%= f.label :password, class: 'form-label' %>
+                <% if @minimum_password_length %>
+                  <em >(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br/>
+              </div>
+
+              <div class="field">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control form-control-lg' %>
+                <%= f.label :password_confirmation, class: 'form-label mb-5'  %><br/>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Register", class: "btn btn-outline-light btn-lg px-5 mb-2" %>
+              </div>
+
+<!--              <div>-->
+<!--                <p class="mb-0">Already have an account? <%#= link_to 'Sign in here', new_user_registration_path, class: "text-white-50 fw-bold" %></p>-->
+<!--              </div>-->
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Register" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black p-3 sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon "></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto ">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link mx-2 active" aria-current="page" href="#">Coins</a>
         </li>
@@ -16,7 +16,49 @@
         <li class="nav-item">
           <a class="nav-link mx-2" href="#">Language</a>
         </li>
+        <li class="nav-item">
+          <!-- Offcanvas toggler button -->
+          <% if current_user %>
+            <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" data-bs-target="#offcanvasDarkNavbar"></span>
+            </button>
+          <% else %>
+            <a><%= link_to 'Sign in', new_user_session_path, class: "nav-link mx-2" %></a>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<!-- Offcanvas content -->
+<div class="offcanvas offcanvas-end text-bg-dark bg-black" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">MENU</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+      <li class="nav-item">
+        Username: <%= current_user&.username %>
+      </li>
+      <li class="nav-item">
+        Email: <%= current_user&.email %>
+      </li>
+      <li class="nav-item">
+        Coins: <%= current_user&.coins %>
+      </li>
+    </ul>
+    <button style="width:100%" type="button" class="btn btn-danger btn-lg">Cash In Now</button>
+    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+      <li><a class="dropdown-item" href="#">Contact Us</a></li>
+      <li class="nav-item">
+        <%= link_to "My Profile", profile_path, class: "dropdown-item" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign out', destroy_user_session_path, class: "dropdown-item", data: { 'turbo-method': :delete } %>
+      </li>
+    </ul>
+  </div>
+</div>
+

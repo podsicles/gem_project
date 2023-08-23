@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+<body class="bg-black text-light">
+<%= render 'client/shared/navbar' %>
+<%= render 'client/shared/sidebar' %>
+<% if notice.present? %>
+  <p class="alert alert-success m-0 p-0"><%= notice %></p>
+<% end %>
+<% if alert != nil %>
+  <p class="alert alert-danger m-0 p-0"><%= alert %></p>
+<% end %>
+<%= yield %>
+<%= render 'client/shared/footer' %>
+</body>
 </html>

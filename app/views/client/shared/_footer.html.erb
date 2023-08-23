@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black p-3">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
@@ -22,20 +22,22 @@
       <!-- Left links -->
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link mx-2 active" aria-current="page" href="#">Share</a>
+          <%= link_to 'Share', '#', class: 'nav-link mx-2 active', 'aria-current': 'page' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Invite</a>
+          <%= link_to 'Invite', '#', class: 'nav-link mx-2' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Lottery</a>
+          <%= link_to 'Lottery', '#', class: 'nav-link mx-2' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Shop</a>
+          <%= link_to 'Shop', '#', class: 'nav-link mx-2' %>
         </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Me</a>
-        </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <%= link_to 'Me', '#', class: 'nav-link mx-2' %>
+          </li>
+        <% end %>
       </ul>
       <!-- Left links -->
     </div>
