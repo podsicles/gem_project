@@ -7,4 +7,6 @@ class User < ApplicationRecord
   enum role: { client: 0, admin: 1 }
 
   validates :username, presence: true, uniqueness: true
+
+  mount_uploader :image, ImageUploader
 end

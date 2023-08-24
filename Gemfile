@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "phonelib"
 gem 'rest-client'
+gem 'carrierwave'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
