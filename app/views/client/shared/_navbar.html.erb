@@ -52,9 +52,11 @@
     <button style="width:100%" type="button" class="btn btn-primary btn-lg">Cash In Now</button>
     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
       <li><a class="dropdown-item" href="#">Contact Us</a></li>
-      <li class="nav-item">
-        <%= link_to "My Profile", profile_path(current_user), class: "dropdown-item" %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "My Profile", profile_path(current_user), class: "dropdown-item" %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to 'Sign out', destroy_user_session_path, class: "dropdown-item", data: { 'turbo-method': :delete } %>
       </li>
