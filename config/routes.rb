@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     scope module: :client, path: '' do
       root 'home#index'
       resources :profiles, only: [:show, :edit, :update]
+      resources :addresses, except: :show
     end
   end
 
