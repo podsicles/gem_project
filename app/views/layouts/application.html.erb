@@ -8,18 +8,48 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+<style>
+    .alert-fade {
+        animation: fadeOut 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            display: none;
+        }
+    }
+</style>
 </head>
 
 <body class="bg-black text-light">
 <%= render 'client/shared/navbar' %>
-<%= render 'client/shared/sidebar' %>
 <% if notice.present? %>
-  <p class="alert alert-success m-0 p-0"><%= notice %></p>
+  <p id="notice-message" class="alert alert-success m-0 p-0"><%= notice %></p>
 <% end %>
-<% if alert != nil %>
-  <p class="alert alert-danger m-0 p-0"><%= alert %></p>
+<% if alert.present? %>
+  <p id="alert-message" class="alert alert-danger m-0 p-0"><%= alert %></p>
 <% end %>
 <%= yield %>
 <%= render 'client/shared/footer' %>
+
+<script>
+    setTimeout(function() {
+        var noticeMessage = document.getElementById('notice-message');
+        if (noticeMessage) {
+            noticeMessage.remove();
+        }
+    }, 3000);
+
+    setTimeout(function() {
+        var alertMessage = document.getElementById('alert-message');
+        if (alertMessage) {
+            alertMessage.remove();
+        }
+    }, 3000);
+</script>
 </body>
 </html>

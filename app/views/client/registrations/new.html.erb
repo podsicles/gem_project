@@ -1,12 +1,9 @@
 <style>
     .gradient-custom {
-        /* fallback for old browsers */
         background: #6a11cb;
 
-        /* Chrome 10-25, Safari 5.1-6 */
         background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
     }
 </style>
@@ -51,10 +48,6 @@
               <div class="actions">
                 <%= f.submit "Register", class: "btn btn-outline-light btn-lg px-5 mb-2" %>
               </div>
-
-<!--              <div>-->
-<!--                <p class="mb-0">Already have an account? <%#= link_to 'Sign in here', new_user_registration_path, class: "text-white-50 fw-bold" %></p>-->
-<!--              </div>-->
             <% end %>
 
           </div>
