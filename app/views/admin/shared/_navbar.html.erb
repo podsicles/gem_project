@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-black p-3 sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">System Management</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto ">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link mx-2" href="#">Change Language</a>
         </li>
@@ -16,7 +16,13 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Sign Out</a></li>
+            <li>
+              <% if current_user %>
+                <%= link_to 'Sign out', destroy_user_session_path, data: { 'turbo-method': :delete }, class: 'dropdown-item' %>
+              <% else %>
+                <%= link_to 'Sign in', new_user_session_path, class: 'dropdown-item' %>
+              <% end %>
+            </li>
           </ul>
         </li>
       </ul>

@@ -1,17 +1,52 @@
-<h2>Admin Sign In</h2>
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #6a11cb;
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: 'current-password' %>
-  </div>
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+</style>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-black text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-  <div>
-    <%= f.submit 'Sign In' %>
+            <div class="mb-md-5 mt-md-4">
+              <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
+              <p class="text-white-50 mb-5">Please enter your email and password</p>
+            </div>
+
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field form-outline form-white mb-4">
+                <%= f.email_field :email, autofocus: true, class: 'form-control form-control-lg' %>
+                <%= f.label :email, class: 'form-label' %><br/>
+              </div>
+
+              <div class="field form-outline form-white">
+                <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control form-control-lg' %>
+                <%= f.label :password, class: 'form-label' %><br/>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="field form-switch mb-3">
+                  <%= f.check_box :remember_me, class: 'form-check-input' %>
+                  <%= f.label :remember_me, class: 'mb-3 small pb-lg-2 form-check-label text-white-50 float-left' %>
+                </div>
+              <% end %>
+
+              <div class="actions">
+                <%= f.submit 'Login', class: " btn btn-outline-light btn-lg px-5 mb-5" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+</section>
