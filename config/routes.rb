@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     }
     scope module: :client, path: '' do
       root 'home#index'
+      get 'users/invite', to: 'users#invite', format: :svg
       resources :profiles, only: [:show, :edit, :update]
       resources :addresses, except: :show
     end
