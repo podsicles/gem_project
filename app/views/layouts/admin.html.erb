@@ -10,9 +10,19 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
-<body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<body class="bg-black text-light">
+<%= render 'admin/shared/navbar' %>
+<%= render 'admin/shared/sidebar' %>
+<% if notice.present? %>
+  <p class="alert alert-success m-0 p-0"><%= notice %></p>
+<% end %>
+<% if alert != nil %>
+  <p class="alert alert-danger m-0 p-0"><%= alert %></p>
+<% end %>
 <%= yield %>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
